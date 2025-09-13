@@ -87,18 +87,17 @@ const App = () => {
       ],
       tech: ['Spring Boot', 'SQL', 'AWS', 'CloudWatch', 'TDD'],
       delay: 400
-    },  {
+    }, 
+     {
       title: "Java Developer",
       company: "M&T Bank – Buffalo, NY",
       period: "2017 - 2019",
       color: "#2563eb",
       bgColor: "#dbeafe",
       achievements: [
-        "Designed and delivered Spring Boot microservices for customer onboarding and loan servicing, integrating Kafka for real-time updates.",
-        "Automated CI/CD with Jenkins, implemented unit testing (JUnit/Mockito), and enhanced security using Spring Security, JWT, and role-based access control.",
-        "Collaborated in Agile sprints with cross-functional teams, applying TDD and documenting architecture for future scalability.",
-        "Optimized database queries improving performance by 35%",
-        "Implemented monitoring solutions with AWS CloudWatch"
+        "Developed customer-facing applications using Java, Spring Boot, and React.js, designing RESTful APIs and integrating third-party services.",
+        "Implemented Kafka queues for asynchronous processing and optimized MySQL & Oracle queries for faster data access.",
+        "Automated CI/CD with Jenkins, wrote unit and integration tests, and improved stability with logging and monitoring solutions.",
       ],
       tech: ['Spring Boot', 'SQL', 'AWS', 'CloudWatch', 'TDD'],
       delay: 400
@@ -109,10 +108,10 @@ const App = () => {
       color: "#2563eb",
       bgColor: "#dbeafe",
       achievements: [
-        "Developed customer-facing applications using Java, Spring Boot, and React.js, designing RESTful APIs and integrating third-party services.",
-        "Implemented Kafka queues for asynchronous processing and worked with MySQL & Oracle databases for efficient data management.",
-        "Automated build and deployment pipelines with Jenkins, wrote unit/integration tests, and implemented logging and monitoring for stability.",
-        "Collaborated with clients and cross-functional teams in Agile sprints, delivering tailored software solutions."
+        "Designed Spring Boot microservices for customer onboarding, integrating Kafka for real-time updates.",
+        "Built React.js dashboards and optimized Oracle/PostgreSQL queries for faster reporting.",
+        "Automated CI/CD with Jenkins, added unit tests, and enhanced security with Spring Security and JWT.",
+        "Collaborated in Agile sprints, applied TDD, and documented architecture for scalability."
       ],
       tech: ['Spring Boot', 'SQL', 'AWS', 'CloudWatch', 'TDD'],
       delay: 400
