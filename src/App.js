@@ -302,8 +302,8 @@ const App = () => {
                 <Award style={{width: '32px', height: '32px'}} />
               </div>
               <h3 style={styles.educationTitle}>Bachelor's Degree</h3>
-              <p style={styles.educationSubtitle}>Technology</p>
-              <p style={{...styles.educationUniversity, color: '#9333ea'}}>JB Institute of Engineering</p>
+              <p style={styles.educationSubtitle}>Computer Science</p>
+              <p style={{...styles.educationUniversity, color: '#9333ea'}}>JB Institute of Engineering and Technology</p>
             </div>
           </div>
         </div>
