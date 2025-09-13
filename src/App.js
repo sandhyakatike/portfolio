@@ -87,7 +87,36 @@ const App = () => {
       ],
       tech: ['Spring Boot', 'SQL', 'AWS', 'CloudWatch', 'TDD'],
       delay: 400
-    }
+    },  {
+      title: "Java Developer",
+      company: "M&T Bank – Buffalo, NY",
+      period: "2017 - 2019",
+      color: "#2563eb",
+      bgColor: "#dbeafe",
+      achievements: [
+        "Designed and delivered Spring Boot microservices for customer onboarding and loan servicing, integrating Kafka for real-time updates.",
+        "Automated CI/CD with Jenkins, implemented unit testing (JUnit/Mockito), and enhanced security using Spring Security, JWT, and role-based access control.",
+        "Collaborated in Agile sprints with cross-functional teams, applying TDD and documenting architecture for future scalability.",
+        "Optimized database queries improving performance by 35%",
+        "Implemented monitoring solutions with AWS CloudWatch"
+      ],
+      tech: ['Spring Boot', 'SQL', 'AWS', 'CloudWatch', 'TDD'],
+      delay: 400
+    }, {
+      title: "Software Engineer",
+      company: "Shrewdify ",
+      period: "2018 - 2020",
+      color: "#2563eb",
+      bgColor: "#dbeafe",
+      achievements: [
+        "Developed customer-facing applications using Java, Spring Boot, and React.js, designing RESTful APIs and integrating third-party services.",
+        "Implemented Kafka queues for asynchronous processing and worked with MySQL & Oracle databases for efficient data management.",
+        "Automated build and deployment pipelines with Jenkins, wrote unit/integration tests, and implemented logging and monitoring for stability.",
+        "Collaborated with clients and cross-functional teams in Agile sprints, delivering tailored software solutions."
+      ],
+      tech: ['Spring Boot', 'SQL', 'AWS', 'CloudWatch', 'TDD'],
+      delay: 400
+    } 
   ];
 
   return (
