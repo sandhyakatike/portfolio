@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import { Mail, Phone, Code, Server, Database, Cloud, Award, Users, Briefcase } from 'lucide-react';
 
@@ -30,1183 +31,409 @@ const App = () => {
     return () => observerRef.current?.disconnect();
   }, []);
 
-  const skills = [
-    { name: 'Java & Spring Boot', level: 95, icon: <Code style={{width: '20px', height: '20px'}} />, delay: 0 },
-    { name: 'React & Frontend', level: 90, icon: <Code style={{width: '20px', height: '20px'}} />, delay: 100 },
-    { name: 'Microservices', level: 88, icon: <Server style={{width: '20px', height: '20px'}} />, delay: 200 },
-    { name: 'SQL & Databases', level: 92, icon: <Database style={{width: '20px', height: '20px'}} />, delay: 300 },
-    { name: 'AWS & Cloud', level: 85, icon: <Cloud style={{width: '20px', height: '20px'}} />, delay: 400 },
-    { name: 'CI/CD & DevOps', level: 80, icon: <Server style={{width: '20px', height: '20px'}} />, delay: 500 }
+  const skillCategories = [
+    {
+      title: 'Backend Development',
+      skills: [
+        { name: 'Java & Spring Boot', level: 95, years: '7+ years', companies: ['American Family', 'Hyland', 'M&T Bank', 'Macy\'s'] },
+        { name: 'Microservices Architecture', level: 90, years: '5+ years', companies: ['American Family', 'Hyland', 'Macy\'s'] },
+        { name: 'RESTful APIs & GraphQL', level: 88, years: '6+ years', companies: ['American Family', 'Hyland', 'M&T Bank'] }
+      ],
+      icon: <Server className="w-6 h-6" />,
+      gradient: 'from-blue-600 to-blue-800'
+    },
+    {
+      title: 'Frontend Development', 
+      skills: [
+        { name: 'React.js & Angular', level: 85, years: '5+ years', companies: ['American Family', 'Hyland', 'M&T Bank'] },
+        { name: 'TypeScript & JavaScript', level: 82, years: '6+ years', companies: ['Hyland', 'M&T Bank', 'Macy\'s'] },
+        { name: 'State Management (Redux/MobX)', level: 80, years: '4+ years', companies: ['American Family', 'Hyland'] }
+      ],
+      icon: <Code className="w-6 h-6" />,
+      gradient: 'from-gray-600 to-gray-800'
+    },
+    {
+      title: 'Cloud & Infrastructure',
+      skills: [
+        { name: 'AWS Services & Lambda', level: 88, years: '4+ years', companies: ['American Family', 'Hyland', 'Shrewdify'] },
+        { name: 'Docker & Kubernetes', level: 85, years: '3+ years', companies: ['Macy\'s', 'M&T Bank'] },
+        { name: 'CI/CD Pipelines', level: 87, years: '5+ years', companies: ['American Family', 'Hyland', 'Macy\'s'] }
+      ],
+      icon: <Cloud className="w-6 h-6" />,
+      gradient: 'from-teal-600 to-teal-800'
+    },
+    {
+      title: 'Database & Storage',
+      skills: [
+        { name: 'SQL Databases (PostgreSQL, Oracle)', level: 90, years: '6+ years', companies: ['American Family', 'Hyland', 'M&T Bank'] },
+        { name: 'NoSQL (MongoDB)', level: 85, years: '4+ years', companies: ['Hyland', 'Macy\'s', 'M&T Bank'] },
+        { name: 'Data Optimization & Caching', level: 83, years: '5+ years', companies: ['American Family', 'M&T Bank'] }
+      ],
+      icon: <Database className="w-6 h-6" />,
+      gradient: 'from-gray-600 to-gray-800'
+    }
   ];
 
   const achievements = [
-    { icon: <Award style={{width: '32px', height: '32px'}} />, title: "Enterprise Solutions", desc: "Architected 15+ enterprise applications serving millions of users", delay: 0 },
-    { icon: <Users style={{width: '32px', height: '32px'}} />, title: "Team Leadership", desc: "Led cross-functional teams of 5-8 developers in Agile environments", delay: 200 },
-    { icon: <Briefcase style={{width: '32px', height: '32px'}} />, title: "Performance Optimization", desc: "Improved system performance by 40% through strategic refactoring", delay: 400 }
+    { icon: <Award className="w-8 h-8" />, title: "Enterprise Solutions", desc: "Architected 15+ enterprise applications serving millions of users", delay: 0 },
+    { icon: <Users className="w-8 h-8" />, title: "Team Leadership", desc: "Led cross-functional teams of 5-8 developers in Agile environments", delay: 200 },
+    { icon: <Briefcase className="w-8 h-8" />, title: "Performance Optimization", desc: "Improved system performance by 40% through strategic refactoring", delay: 400 }
   ];
 
   const experiences = [
     {
       title: "Senior Java Full Stack Developer",
       company: "American Family Insurance",
-      period: "2022 - Present",
-      color: "#4f46e5",
-      bgColor: "#ddd6fe",
+      period: "2023 - Present",
+      color: "text-blue-700",
+      bgColor: "bg-blue-50",
       achievements: [
-        "Architected microservices handling 10M+ daily transactions",
-        "Reduced API response time by 60% through optimization",
-        "Led migration of legacy systems to cloud-native architecture"
+       "Developed scalable full-stack applications by building responsive React.js UIs, integrating with Spring Boot REST/GraphQL APIs, and securing access with OAuth2/JWT.",
+       "Engineered high-performance backend services using Spring Data JPA, Hibernate, and Kafka, optimizing queries and enabling real-time claims workflow processing.",
+       "Deployed cloud-native solutions on AWS (EC2, Lambda, S3) with Terraform IaC, auto-scaling, and CI/CD pipelines (Jenkins + Docker) to ensure reliability and faster releases.",
+       "Improved code quality and collaboration through TDD with JUnit/Mockito, Agile sprints, and pair programming, reducing production issues and boosting delivery speed."
       ],
-      tech: ['React', 'Spring Boot', 'Kafka', 'AWS', 'PostgreSQL', 'Jenkins'],
       delay: 0
     },
     {
       title: "Full Stack Developer",
       company: "Hyland Software",
-      period: "2020 - 2022",
-      color: "#9333ea",
-      bgColor: "#f3e8ff",
+      period: "2021 - 2023",
+      color: "text-gray-700",
+      bgColor: "bg-gray-50",
       achievements: [
-        "Built document management system serving 500K+ users",
-        "Improved system performance by 25% through code optimization",
-        "Implemented automated testing reducing bugs by 40%"
+        "Built dynamic, reusable React.js components with conditional rendering and higher-order patterns, integrating MobX state management and URQL for efficient GraphQL data fetching.",
+        "Developed Spring Boot microservices with SOAP/REST APIs, RabbitMQ for asynchronous messaging, and optimized data access layers across Oracle and MongoDB for scalable integrations.",
+        "Deployed and automated cloud infrastructure on AWS using CloudFormation, S3 Glacier, and CI/CD pipelines with Jenkins to ensure scalability, compliance, and faster releases.",
+        "Enhanced reliability and collaboration by implementing TDD with JUnit, integration testing with Apache CXF, and Agile practices with cross-functional teams."
       ],
-      tech: ['React', 'Java', 'Spring Boot', 'JUnit', 'Mockito', 'Scrum'],
       delay: 200
     },
     {
       title: "Java Developer",
       company: "Macy's Inc.",
-      period: "2018 - 2020",
-      color: "#2563eb",
-      bgColor: "#dbeafe",
+      period: "2019 - 2021",
+      color: "text-blue-700",
+      bgColor: "bg-blue-50",
       achievements: [
-        "Developed e-commerce backend serving millions of customers",
-        "Optimized database queries improving performance by 35%",
-        "Implemented monitoring solutions with AWS CloudWatch"
+        "Developed dynamic Angular 12 front-end interfaces with reusable components and secure workflows, integrating with Spring Boot RESTful microservices for retail systems.",
+        "Engineered scalable microservices with PostgreSQL and MongoDB, leveraging JMS for inter-service communication and optimizing order/loyalty processing performance.",
+        "Deployed cloud-native applications on Azure using Docker and Ansible, implementing CI/CD pipelines in Jenkins and automated testing for faster, reliable releases.",
+        "Monitored system health with Prometheus/Grafana and applied TDD (Karma, Jasmine, JUnit) to ensure high availability, resilience, and customer experience reliability."
       ],
-      tech: ['Spring Boot', 'SQL', 'AWS', 'CloudWatch', 'TDD'],
       delay: 400
     }, 
-     {
+    {
       title: "Java Developer",
       company: "M&T Bank – Buffalo, NY",
-      period: "2017 - 2019",
-      color: "#2563eb",
-      bgColor: "#dbeafe",
+      period: "2018 - 2019",
+      color: "text-teal-700",
+      bgColor: "bg-teal-50",
       achievements: [
-        "Developed customer-facing applications using Java, Spring Boot, and React.js, designing RESTful APIs and integrating third-party services.",
-        "Implemented Kafka queues for asynchronous processing and optimized MySQL & Oracle queries for faster data access.",
-        "Automated CI/CD with Jenkins, wrote unit and integration tests, and improved stability with logging and monitoring solutions.",
-      ],
-      tech: ['Spring Boot', 'SQL', 'AWS', 'CloudWatch', 'TDD'],
-      delay: 400
-    }, {
+       "Built responsive Angular/TypeScript UIs with reusable components and NgRx state management, streamlining complex banking and loan processing workflows.",
+       "Developed secure, high-performance Spring Boot APIs with Redis caching, IBM MQ messaging, and Spring Security for authentication/authorization of sensitive financial data.",
+       "Designed scalable multi-database solutions using Hibernate, MongoDB, and Azure Cosmos DB, ensuring high availability, consistency, and multi-region support.",
+       "Deployed containerized microservices on Azure AKS with CI/CD automation (Git + Jenkins), applying TDD (TestNG, JMeter) to deliver resilient and production-ready systems."
+         ],
+      delay: 600
+    }, 
+    {
       title: "Software Engineer",
-      company: "Shrewdify ",
-      period: "2018 - 2020",
-      color: "#2563eb",
-      bgColor: "#dbeafe",
+      company: "Shrewdify",
+      period: "2017 - 2018",
+      color: "text-gray-700",
+      bgColor: "bg-gray-50",
       achievements: [
-        "Designed Spring Boot microservices for customer onboarding, integrating Kafka for real-time updates.",
-        "Built React.js dashboards and optimized Oracle/PostgreSQL queries for faster reporting.",
-        "Automated CI/CD with Jenkins, added unit tests, and enhanced security with Spring Security and JWT.",
-        "Collaborated in Agile sprints, applied TDD, and documented architecture for scalability."
+       "Developed responsive analytics dashboards with interactive visualizations and secure RESTful APIs, integrating Shrewdify CRM with external applications.",
+       "Optimized backend operations on Oracle 12c, improving query performance, data security, and overall system reliability.",
+       "Deployed SaaS applications on AWS with CI/CD pipelines (Git + Jenkins), ensuring high availability, scalability, and automated deployments.",
+       "Applied TDD with JUnit and collaborated in Agile teams, enhancing code stability, maintainability, and iterative feature delivery."
       ],
-      tech: ['Spring Boot', 'SQL', 'AWS', 'CloudWatch', 'TDD'],
-      delay: 400
+      delay: 800
     } 
   ];
 
   return (
-    <div style={styles.container}>
+    <div className="min-h-screen bg-gray-100 font-sans">
       <style>{cssStyles}</style>
       
-      {/* Floating particles background */}
-      <div className="particles">
-        {[...Array(20)].map((_, i) => (
-          <div key={i} className="particle" style={{
-            left: `${Math.random() * 100}%`,
-            animationDelay: `${Math.random() * 20}s`,
-            animationDuration: `${20 + Math.random() * 20}s`
-          }} />
-        ))}
-      </div>
-      
-      {/* Hero Section */}
-      <section style={styles.hero} data-animate id="hero">
-        <div 
-          className="hero-bg"
-          style={{
-            ...styles.heroBackground,
-            transform: `translateY(${scrollY * 0.5}px) scale(${1 + scrollY * 0.0001})`
-          }}
-        />
-        
-        <div style={styles.heroContent} className="hero-content">
-          <div style={styles.heroGlass} className="hero-glass">
-            <h1 style={styles.heroTitle} className="hero-title">
-              Sandhya Rani Katike
-            </h1>
-            <p style={styles.heroSubtitle} className="hero-subtitle">
-              Senior Full Stack Developer • Enterprise Solutions Architect
-            </p>
-            <div style={styles.heroBadges} className="hero-badges">
-              <span style={styles.badge} className="badge">8+ Years Experience</span>
-              <span style={styles.badge} className="badge">Java Ecosystem Expert</span>
-              <span style={styles.badge} className="badge">Cloud Architecture</span>
-            </div>
+      {/* Header Navigation */}
+      <header className="fixed top-0 left-0 w-full bg-white shadow-md z-50">
+        <nav className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+          <h1 className="text-2xl font-semibold text-blue-700">Sandhya Rani Katike</h1>
+          <div className="flex gap-6">
+            <a href="#hero" className="text-gray-700 hover:text-blue-700 transition-colors">Home</a>
+            <a href="#about" className="text-gray-700 hover:text-blue-700 transition-colors">About</a>
+            <a href="#skills" className="text-gray-700 hover:text-blue-700 transition-colors">Skills</a>
+            <a href="#experience" className="text-gray-700 hover:text-blue-700 transition-colors">Experience</a>
+            <a href="#education" className="text-gray-700 hover:text-blue-700 transition-colors">Education</a>
+            <a href="#contact" className="text-gray-700 hover:text-blue-700 transition-colors">Contact</a>
           </div>
-        </div>
-        
-        {/* Scroll indicator */}
-        <div className="scroll-indicator">
-          <div className="scroll-arrow"></div>
+        </nav>
+      </header>
+
+      {/* Hero Section */}
+      <section className="relative pt-20 pb-10 flex items-center justify-center bg-white" data-animate id="hero">
+        <div className="text-center px-4 max-w-4xl">
+          <h1 className="text-4xl md:text-5xl font-semibold text-gray-800 mb-4">Sandhya Rani Katike</h1>
+          <p className="text-lg text-gray-600 mb-6">Senior Full Stack Developer • 8 Years of Enterprise Solutions</p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <span className="px-4 py-2 rounded-md bg-blue-50 text-blue-700 font-medium transition hover:bg-blue-100">Java & Spring Expert</span>
+            <span className="px-4 py-2 rounded-md bg-teal-50 text-teal-700 font-medium transition hover:bg-teal-100">Cloud Architecture</span>
+            <span className="px-4 py-2 rounded-md bg-gray-50 text-gray-700 font-medium transition hover:bg-gray-100">Agile Leadership</span>
+          </div>
         </div>
       </section>
 
       {/* About Section */}
-      <section style={styles.section} data-animate id="about">
-        <div style={styles.maxWidth}>
-          <div 
-            style={styles.glass} 
-            className={`glass-card ${visibleSections.has('about') ? 'animate-in' : ''}`}
-          >
-            <h2 style={styles.sectionTitle} className="fade-in-up">About</h2>
-            <div style={styles.aboutGrid}>
-              <div className="fade-in-left">
-                <p style={styles.aboutText}>
-                  Senior Full Stack Developer with <strong>8+ years</strong> of expertise in designing and delivering 
-                  enterprise-grade applications. Specialized in Java ecosystem, modern React frontends, and 
-                  scalable cloud architectures.
-                </p>
-                <p style={styles.aboutSubtext}>
-                  Throughout my career, I've architected solutions serving millions of users across insurance, 
-                  e-commerce, and document management domains. My focus lies in building maintainable, 
-                  performant systems that drive business value through technical excellence.
-                </p>
-              </div>
-              <div style={styles.achievementsGrid} className="fade-in-right">
-                {achievements.map((achievement, idx) => (
-                  <div 
-                    key={idx} 
-                    style={{
-                      ...styles.achievementCard,
-                      animationDelay: `${achievement.delay}ms`
-                    }}
-                    className={`achievement-card ${visibleSections.has('about') ? 'bounce-in' : ''}`}
-                  >
-                    <div style={styles.achievementIcon} className="icon-pulse">
-                      {achievement.icon}
-                    </div>
-                    <h4 style={styles.achievementTitle}>{achievement.title}</h4>
-                    <p style={styles.achievementDesc}>{achievement.desc}</p>
-                  </div>
-                ))}
-              </div>
+      <section className="py-16 px-4 bg-gray-50" data-animate id="about">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-3xl font-semibold text-gray-800 mb-8 text-center">About</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className={`p-6 bg-white rounded-lg shadow-md transition-all duration-300 ${visibleSections.has('about') ? 'fade-in' : ''}`}>
+              <p className="text-gray-700 leading-7">
+                Senior Full Stack Developer with <strong>8+ years</strong> of expertise in designing and delivering 
+                enterprise-grade applications. Specialized in Java ecosystem, modern React frontends, and 
+                scalable cloud architectures.
+              </p>
+              <p className="text-gray-600 leading-7 mt-4">
+                I've architected solutions serving millions of users across insurance, e-commerce, and document 
+                management domains, focusing on maintainable, performant systems that drive business value.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 gap-6">
+              {achievements.map((achievement, idx) => (
+                <div 
+                  key={idx} 
+                  className={`p-4 bg-white rounded-lg shadow-md text-center transition-all duration-300 ${visibleSections.has('about') ? 'fade-in' : ''}`}
+                  style={{ animationDelay: `${achievement.delay}ms` }}
+                >
+                  <div className="w-12 h-12 mx-auto mb-4 text-blue-700">{achievement.icon}</div>
+                  <h4 className="font-medium text-gray-800 mb-2">{achievement.title}</h4>
+                  <p className="text-sm text-gray-600">{achievement.desc}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
       {/* Skills Section */}
-      <section style={styles.section} data-animate id="skills">
-        <div style={styles.skillsContainer}>
-          <h2 style={styles.sectionTitle} className="fade-in-up">Technical Expertise</h2>
-          <div style={styles.skillsGrid}>
-            {skills.map((skill, idx) => (
-              <div 
-                key={idx} 
-                style={{
-                  ...styles.skillCard,
-                  animationDelay: `${skill.delay}ms`
-                }}
-                className={`skill-card ${visibleSections.has('skills') ? 'slide-in-up' : ''}`}
+<section className="py-20 px-6 bg-gray-50" id="skills">
+  <div className="max-w-6xl mx-auto">
+    <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">
+      Technical Expertise
+    </h2>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {[
+        {
+          title: "Programming & Scripting",
+          skills: ["Java 8/11/17", "JavaScript", "Python", "Bash", "Shell Script"]
+        },
+        {
+          title: "Frameworks & Libraries",
+          skills: ["Spring Boot", "Spring Core", "Spring Security", "Spring MVC", "Hibernate", "React.js", "Angular 12/16", "Node.js", "Vue.js", "Next.js"]
+        },
+        {
+          title: "Web & Services",
+          skills: ["HTML5", "CSS3", "Bootstrap", "Tailwind CSS", "JSON", "Apache Axis", "CXF", "WSDL", "JAX-WS"]
+        },
+        {
+          title: "Databases & Messaging",
+          skills: ["Oracle 12c", "PostgreSQL", "MongoDB", "Redis", "Azure Cosmos DB", "Apache Kafka", "RabbitMQ", "IBM MQ", "JMS"]
+        },
+        {
+          title: "Cloud & DevOps",
+          skills: ["AWS", "Azure", "GCP", "Docker", "Kubernetes", "Terraform", "Ansible", "CloudFormation", "Jenkins", "GitHub Actions", "Maven", "Gradle"]
+        },
+        {
+          title: "Testing, Monitoring & Tools",
+          skills: ["JUnit", "Mockito", "JMeter", "TestNG", "Cucumber", "Grafana", "Prometheus", "Splunk", "Dynatrace", "Nagios", "Git", "SVN"]
+        }
+      ].map((category, idx) => (
+        <div 
+          key={idx} 
+          className="p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
+        >
+          <h3 className="text-xl font-semibold text-gray-900 mb-4">
+            {category.title}
+          </h3>
+          <ul className="flex flex-wrap gap-2">
+            {category.skills.map((skill, i) => (
+              <li 
+                key={i} 
+                className="px-3 py-1 bg-blue-50 text-blue-700 rounded-md text-sm font-medium"
               >
-                <div style={styles.skillHeader}>
-                  <div style={styles.skillInfo}>
-                    <div style={styles.skillIcon} className="skill-icon-rotate">
-                      {skill.icon}
-                    </div>
-                    <span style={styles.skillName}>{skill.name}</span>
-                  </div>
-                  <span style={styles.skillLevel} className="skill-percentage">{skill.level}%</span>
-                </div>
-                <div style={styles.skillBarBg}>
-                  <div 
-                    className={`skill-bar ${visibleSections.has('skills') ? 'animate-bar' : ''}`}
-                    style={{
-                      ...styles.skillBar,
-                      width: visibleSections.has('skills') ? `${skill.level}%` : '0%',
-                      animationDelay: `${skill.delay + 500}ms`
-                    }}
-                  />
-                </div>
-              </div>
+                {skill}
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
+
+
+
 
       {/* Experience Section */}
-      <section style={styles.section} data-animate id="experience">
-        <div style={styles.maxWidth}>
-          <h2 style={styles.sectionTitle} className="fade-in-up">Professional Journey</h2>
-          <div style={styles.experienceContainer}>
+      <section className="py-16 px-4 bg-gray-50" data-animate id="experience">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-3xl font-semibold text-gray-800 mb-8 text-center">Professional Journey</h2>
+          <div className="space-y-6">
             {experiences.map((exp, idx) => (
               <div 
                 key={idx}
-                style={{
-                  ...styles.experienceCard,
-                  animationDelay: `${exp.delay}ms`
-                }}
-                className={`experience-card ${visibleSections.has('experience') ? 'slide-in-left' : ''}`}
+                className={`p-6 bg-white rounded-lg shadow-md transition-all duration-300 ${visibleSections.has('experience') ? 'fade-in' : ''}`}
+                style={{ animationDelay: `${exp.delay}ms` }}
               >
-                <div style={styles.expHeader}>
+                <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
                   <div>
-                    <h3 style={styles.expTitle} className="exp-title-hover">{exp.title}</h3>
-                    <p style={{...styles.expCompany, color: exp.color}} className="company-glow">{exp.company}</p>
+                    <h3 className="text-xl font-semibold text-gray-800">{exp.title}</h3>
+                    <p className={`${exp.color} font-medium`}>{exp.company}</p>
                   </div>
-                  <span style={{...styles.expDate, backgroundColor: exp.bgColor, color: exp.color}} className="date-badge">
-                    {exp.period}
-                  </span>
+                  <span className={`${exp.bgColor} ${exp.color} px-4 py-1 rounded-md text-sm font-medium mt-2 md:mt-0`}>{exp.period}</span>
                 </div>
-                <div style={styles.expContent}>
-                  <div>
-                    <h4 style={styles.expSectionTitle}>Key Achievements</h4>
-                    <ul style={styles.expList} className="achievement-list">
-                      {exp.achievements.map((achievement, aidx) => (
-                        <li key={aidx} className="achievement-item" style={{animationDelay: `${exp.delay + (aidx * 100)}ms`}}>
-                          • {achievement}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div>
-                    <h4 style={styles.expSectionTitle}>Technologies</h4>
-                    <div style={styles.techTags} className="tech-tags">
-                      {exp.tech.map((tech, tidx) => (
-                        <span 
-                          key={tech} 
-                          style={{
-                            ...styles.techTag,
-                            animationDelay: `${exp.delay + 300 + (tidx * 50)}ms`
-                          }}
-                          className={`tech-tag ${visibleSections.has('experience') ? 'tech-tag-animate' : ''}`}
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
+                <ul className="list-disc pl-5 text-gray-600">
+                  {exp.achievements.map((achievement, aidx) => (
+                    <li key={aidx} className="mb-2">{achievement}</li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Education */}
-      <section style={styles.section} data-animate id="education">
-        <div style={styles.skillsContainer}>
-          <h2 style={styles.sectionTitle} className="fade-in-up">Education</h2>
-          <div style={styles.educationGrid}>
-            <div 
-              style={styles.educationCard}
-              className={`education-card ${visibleSections.has('education') ? 'flip-in' : ''}`}
-            >
-              <div style={styles.educationIcon} className="education-icon-float">
-                <Award style={{width: '32px', height: '32px'}} />
-              </div>
-              <h3 style={styles.educationTitle}>Master's Degree</h3>
-              <p style={styles.educationSubtitle}>Computer and Information Systems</p>
-              <p style={styles.educationUniversity}>Saint Louis University</p>
-            </div>
-            <div 
-              style={styles.educationCard}
-              className={`education-card ${visibleSections.has('education') ? 'flip-in' : ''}`}
-            >
-              <div style={{...styles.educationIcon, background: 'linear-gradient(135deg, #a855f7, #ec4899)'}} className="education-icon-float">
-                <Award style={{width: '32px', height: '32px'}} />
-              </div>
-              <h3 style={styles.educationTitle}>Bachelor's Degree</h3>
-              <p style={styles.educationSubtitle}>Computer Science</p>
-              <p style={{...styles.educationUniversity, color: '#9333ea'}}>JB Institute of Engineering and Technology</p>
-            </div>
+      {/* Education Section */}
+      <section className="py-16 px-4 bg-white" data-animate id="education">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-3xl font-semibold text-gray-800 mb-8 text-center">Education</h2>
+          <div className={`p-6 bg-gray-50 rounded-lg shadow-md text-center transition-all duration-300 ${visibleSections.has('education') ? 'fade-in' : ''}`}>
+            <div className="w-12 h-12 mx-auto mb-4 text-blue-700"><Award className="w-8 h-8" /></div>
+            <h3 className="text-xl font-semibold text-gray-800 mb-2">Master's Degree</h3>
+            <p className="text-gray-600 mb-2">Computer and Information Systems</p>
+            <p className="text-blue-700 font-medium">Saint Louis University</p>
+            <p className="text-gray-600 text-sm mt-2">2023 - 2025</p>
           </div>
         </div>
       </section>
 
-      {/* Contact */}
-      <section style={styles.section} data-animate id="contact">
-        <div style={styles.skillsContainer}>
-          <h2 style={styles.sectionTitle} className="fade-in-up">Let's Connect</h2>
-          <div 
-            style={styles.contactGlass}
-            className={`glass-card ${visibleSections.has('contact') ? 'zoom-in' : ''}`}
-          >
-            <p style={styles.contactText} className="fade-in-up">
-              Ready to discuss your next enterprise solution or explore collaboration opportunities?
-            </p>
-            <div style={styles.contactGrid}>
+      {/* Contact Section */}
+      <section className="py-16 px-4 bg-gray-50" data-animate id="contact">
+        <div className="max-w-5xl mx-auto text-center">
+          <h2 className="text-3xl font-semibold text-gray-800 mb-8">Let's Connect</h2>
+          <div className={`p-6 bg-white rounded-lg shadow-md transition-all duration-300 ${visibleSections.has('contact') ? 'fade-in' : ''}`}>
+            <p className="text-gray-600 mb-6">Ready to discuss your next enterprise solution or explore collaboration opportunities?</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <a 
                 href="mailto:sandhyak5757@gmail.com" 
-                style={styles.contactButton}
-                className="contact-button pulse-button"
+                className="flex items-center justify-center gap-2 p-4 bg-blue-700 text-white rounded-md hover:bg-blue-800 transition"
               >
-                <Mail style={{width: '24px', height: '24px'}} />
-                <span style={styles.contactButtonText}>sandhyak5757@gmail.com</span>
+                <Mail className="w-5 h-5" />
+                <span>sandhyak5757@gmail.com</span>
               </a>
               <a 
                 href="tel:+13145657252" 
-                style={{...styles.contactButton, background: 'linear-gradient(135deg, #a855f7, #ec4899)'}}
-                className="contact-button pulse-button"
+                className="flex items-center justify-center gap-2 p-4 bg-teal-700 text-white rounded-md hover:bg-teal-800 transition"
               >
-                <Phone style={{width: '24px', height: '24px'}} />
-                <span style={styles.contactButtonText}>314-565-7252</span>
+                <Phone className="w-5 h-5" />
+                <span>314-565-7252</span>
               </a>
             </div>
           </div>
         </div>
       </section>
 
+      {/* Footer */}
+      <footer className="py-6 bg-white text-center text-gray-600">
+        <p>© 2025 Sandhya Rani Katike. All rights reserved.</p>
+      </footer>
     </div>
   );
 };
 
-const styles = {
-  container: {
-    minHeight: '100vh',
-    background: 'linear-gradient(135deg, #f8fafc, #e0f2fe, #e0e7ff)',
-    fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-    position: 'relative',
-    overflow: 'hidden'
-  },
-  
-  hero: {
-    position: 'relative',
-    height: '100vh',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    overflow: 'hidden'
-  },
-  
-  heroBackground: {
-    position: 'absolute',
-    inset: '0',
-    background: 'linear-gradient(135deg, rgba(79, 70, 229, 0.2), rgba(139, 92, 246, 0.1), rgba(37, 99, 235, 0.2))',
-    transition: 'transform 0.1s ease-out'
-  },
-  
-  heroContent: {
-    position: 'relative',
-    zIndex: '10',
-    textAlign: 'center',
-    padding: '0 2rem',
-    maxWidth: '64rem'
-  },
-  
-  heroGlass: {
-    backdropFilter: 'blur(40px)',
-    background: 'rgba(255, 255, 255, 0.1)',
-    borderRadius: '1.5rem',
-    padding: '3rem',
-    border: '1px solid rgba(255, 255, 255, 0.2)',
-    boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
-    transition: 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)'
-  },
-  
-  heroTitle: {
-    fontSize: '3.75rem',
-    fontWeight: '200',
-    color: '#1f2937',
-    marginBottom: '1rem',
-    letterSpacing: '-0.025em'
-  },
-  
-  heroSubtitle: {
-    fontSize: '1.25rem',
-    color: '#4b5563',
-    marginBottom: '2rem',
-    fontWeight: '300'
-  },
-  
-  heroBadges: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    gap: '1rem',
-    fontSize: '0.875rem',
-    color: '#6b7280'
-  },
-  
-  badge: {
-    padding: '0.5rem 1rem',
-    borderRadius: '9999px',
-    background: 'rgba(255, 255, 255, 0.2)',
-    backdropFilter: 'blur(10px)',
-    transition: 'all 0.3s ease'
-  },
-  
-  section: {
-    padding: '5rem 2rem'
-  },
-  
-  maxWidth: {
-    maxWidth: '72rem',
-    margin: '0 auto'
-  },
-  
-  skillsContainer: {
-    maxWidth: '64rem',
-    margin: '0 auto'
-  },
-  
-  glass: {
-    backdropFilter: 'blur(40px)',
-    background: 'rgba(255, 255, 255, 0.3)',
-    borderRadius: '1.5rem',
-    padding: '3rem',
-    border: '1px solid rgba(255, 255, 255, 0.3)',
-    boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.1)',
-    transition: 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)'
-  },
-  
-  sectionTitle: {
-    fontSize: '2.25rem',
-    fontWeight: '200',
-    color: '#1f2937',
-    marginBottom: '3rem',
-    textAlign: 'center'
-  },
-  
-  aboutGrid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-    gap: '3rem',
-    alignItems: 'center'
-  },
-  
-  aboutText: {
-    fontSize: '1.125rem',
-    color: '#374151',
-    lineHeight: '1.75',
-    marginBottom: '1.5rem'
-  },
-  
-  aboutSubtext: {
-    color: '#4b5563',
-    lineHeight: '1.75'
-  },
-  
-  achievementsGrid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(2, 1fr)',
-    gap: '1.5rem'
-  },
-  
-  achievementCard: {
-    textAlign: 'center',
-    transition: 'transform 0.3s ease'
-  },
-  
-  achievementIcon: {
-    width: '4rem',
-    height: '4rem',
-    margin: '0 auto 1rem',
-    borderRadius: '1rem',
-    background: 'linear-gradient(135deg, #4f46e5, #7c3aed)',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    color: 'white',
-    transition: 'all 0.3s ease'
-  },
-  
-  achievementTitle: {
-    fontWeight: '500',
-    color: '#1f2937',
-    marginBottom: '0.5rem'
-  },
-  
-  achievementDesc: {
-    fontSize: '0.875rem',
-    color: '#4b5563'
-  },
-  
-  skillsGrid: {
-    display: 'grid',
-    gap: '1.5rem'
-  },
-  
-  skillCard: {
-    backdropFilter: 'blur(40px)',
-    background: 'rgba(255, 255, 255, 0.2)',
-    borderRadius: '1rem',
-    padding: '1.5rem',
-    border: '1px solid rgba(255, 255, 255, 0.3)',
-    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
-  },
-  
-  skillHeader: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    marginBottom: '1rem'
-  },
-  
-  skillInfo: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '0.75rem'
-  },
-  
-  skillIcon: {
-    width: '2.5rem',
-    height: '2.5rem',
-    borderRadius: '0.75rem',
-    background: 'linear-gradient(135deg, #4f46e5, #7c3aed)',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    color: 'white',
-    transition: 'transform 0.3s ease'
-  },
-  
-  skillName: {
-    fontWeight: '500',
-    color: '#1f2937'
-  },
-  
-  skillLevel: {
-    fontSize: '0.875rem',
-    color: '#4b5563'
-  },
-  
-  skillBarBg: {
-    width: '100%',
-    background: 'rgba(255, 255, 255, 0.3)',
-    borderRadius: '9999px',
-    height: '0.5rem',
-    overflow: 'hidden'
-  },
-  
-  skillBar: {
-    height: '0.5rem',
-    background: 'linear-gradient(90deg, #4f46e5, #7c3aed)',
-    borderRadius: '9999px',
-    transition: 'width 1.5s cubic-bezier(0.4, 0, 0.2, 1)',
-    position: 'relative'
-  },
-  
-  experienceContainer: {
-    display: 'grid',
-    gap: '2rem'
-  },
-  
-  experienceCard: {
-    backdropFilter: 'blur(40px)',
-    background: 'rgba(255, 255, 255, 0.25)',
-    borderRadius: '1.5rem',
-    padding: '2rem',
-    border: '1px solid rgba(255, 255, 255, 0.3)',
-    transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
-  },
-  
-  expHeader: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'flex-start',
-    marginBottom: '1.5rem'
-  },
-  
-  expTitle: {
-    fontSize: '1.5rem',
-    fontWeight: '500',
-    color: '#1f2937',
-    transition: 'color 0.3s ease'
-  },
-  
-  expCompany: {
-    fontWeight: '500',
-    transition: 'all 0.3s ease'
-  },
-  
-  expDate: {
-    padding: '0.5rem 1rem',
-    borderRadius: '9999px',
-    fontSize: '0.875rem',
-    transition: 'all 0.3s ease'
-  },
-  
-  expContent: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-    gap: '2rem'
-  },
-  
-  expSectionTitle: {
-    fontWeight: '500',
-    color: '#1f2937',
-    marginBottom: '0.75rem'
-  },
-  
-  expList: {
-    listStyle: 'none',
-    padding: '0',
-    margin: '0',
-    color: '#4b5563',
-    lineHeight: '1.5'
-  },
-  
-  techTags: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    gap: '0.5rem'
-  },
-  
-  techTag: {
-    padding: '0.25rem 0.75rem',
-    background: 'rgba(255, 255, 255, 0.4)',
-    borderRadius: '0.5rem',
-    fontSize: '0.875rem',
-    color: '#374151',
-    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
-  },
-  
-  educationGrid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-    gap: '2rem'
-  },
-  
-  educationCard: {
-    backdropFilter: 'blur(40px)',
-    background: 'rgba(255, 255, 255, 0.25)',
-    borderRadius: '1.5rem',
-    padding: '2rem',
-    border: '1px solid rgba(255, 255, 255, 0.3)',
-    textAlign: 'center',
-    transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
-  },
-  
-  educationIcon: {
-    width: '4rem',
-    height: '4rem',
-    margin: '0 auto 1.5rem',
-    borderRadius: '1rem',
-    background: 'linear-gradient(135deg, #4f46e5, #7c3aed)',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    color: 'white',
-    transition: 'transform 0.3s ease'
-  },
-  
-  educationTitle: {
-    fontSize: '1.25rem',
-    fontWeight: '500',
-    color: '#1f2937',
-    marginBottom: '0.5rem'
-  },
-  
-  educationSubtitle: {
-    color: '#4b5563',
-    marginBottom: '0.5rem'
-  },
-  
-  educationUniversity: {
-    color: '#4f46e5',
-    fontWeight: '500'
-  },
-  
-  contactGlass: {
-    backdropFilter: 'blur(40px)',
-    background: 'rgba(255, 255, 255, 0.3)',
-    borderRadius: '1.5rem',
-    padding: '3rem',
-    border: '1px solid rgba(255, 255, 255, 0.3)',
-    textAlign: 'center',
-    transition: 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)'
-  },
-  
-  contactText: {
-    fontSize: '1.125rem',
-    color: '#374151',
-    marginBottom: '2rem'
-  },
-  
-  contactGrid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-    gap: '2rem'
-  },
-  
-  contactButton: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: '0.75rem',
-    padding: '1.5rem',
-    borderRadius: '1rem',
-    background: 'linear-gradient(135deg, #4f46e5, #7c3aed)',
-    color: 'white',
-    textDecoration: 'none',
-    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
-  },
-  
-  contactButtonText: {
-    fontWeight: '500'
-  }
-};
-
 const cssStyles = `
-  /* Floating particles */
-  .particles {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1;
-  }
-  
-  .particle {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: radial-gradient(circle, rgba(79, 70, 229, 0.6), transparent);
-    border-radius: 50%;
-    animation: float infinite ease-in-out;
-  }
-  
-  @keyframes float {
-    0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-    10% { opacity: 1; }
-    90% { opacity: 1; }
-    100% { transform: translateY(-10px) rotate(360deg); opacity: 0; }
-  }
-  
-  /* Scroll indicator */
-  .scroll-indicator {
-    position: absolute;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    animation: bounce 2s infinite;
-  }
-  
-  .scroll-arrow {
-    width: 24px;
-    height: 24px;
-    border: 2px solid rgba(255, 255, 255, 0.8);
-    border-top: none;
-    border-right: none;
-    transform: rotate(-45deg);
-    animation: arrowMove 1.5s infinite;
-  }
-  
-  @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-    40% { transform: translateX(-50%) translateY(-10px); }
-    60% { transform: translateX(-50%) translateY(-5px); }
-  }
-  
-  @keyframes arrowMove {
-    0% { opacity: 0; transform: rotate(-45deg) translate(-5px, -5px); }
-    50% { opacity: 1; }
-    100% { opacity: 0; transform: rotate(-45deg) translate(5px, 5px); }
-  }
-  
-  /* Hero animations */
-  .hero-content {
-    animation: heroFadeIn 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  
-  @keyframes heroFadeIn {
-    from { opacity: 0; transform: translateY(50px) scale(0.95); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
-  }
-  
-  .hero-glass {
-    animation: glassSlideIn 1s 0.3s both cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  
-  @keyframes glassSlideIn {
-    from { opacity: 0; transform: translateY(30px); backdrop-filter: blur(0px); }
-    to { opacity: 1; transform: translateY(0); backdrop-filter: blur(40px); }
-  }
-  
-  .hero-title {
-    animation: titleTypewriter 2s 0.8s both;
-    overflow: hidden;
-    white-space: nowrap;
-    border-right: 3px solid #4f46e5;
-  }
-  
-  @keyframes titleTypewriter {
-    from { width: 0; }
-    to { width: 100%; border-right: 3px solid transparent; }
-  }
-  
-  .hero-subtitle {
-    animation: slideInUp 1s 1.5s both cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  
-  .hero-badges {
-    animation: fadeIn 1s 2s both;
-  }
-  
-  .badge {
-    animation: badgePop 0.6s ease-out both;
-  }
-  
-  .badge:nth-child(1) { animation-delay: 2.2s; }
-  .badge:nth-child(2) { animation-delay: 2.4s; }
-  .badge:nth-child(3) { animation-delay: 2.6s; }
-  
-  @keyframes badgePop {
-    from { opacity: 0; transform: scale(0.5) rotateY(90deg); }
-    to { opacity: 1; transform: scale(1) rotateY(0deg); }
-  }
-  
-  .badge:hover {
-    transform: translateY(-5px) scale(1.1);
-    box-shadow: 0 10px 25px rgba(79, 70, 229, 0.3);
-  }
-  
-  /* Section animations */
-  .animate-in {
-    animation: slideInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  
-  @keyframes slideInUp {
-    from { opacity: 0; transform: translateY(60px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  
-  .fade-in-up {
-    animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  
-  .fade-in-left {
-    animation: fadeInLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  
-  @keyframes fadeInLeft {
-    from { opacity: 0; transform: translateX(-50px); }
-    to { opacity: 1; transform: translateX(0); }
-  }
-  
-  .fade-in-right {
-    animation: fadeInRight 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  
-  @keyframes fadeInRight {
-    from { opacity: 0; transform: translateX(50px); }
-    to { opacity: 1; transform: translateX(0); }
-  }
-  
-  .bounce-in {
-    animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) both;
-  }
-  
-  @keyframes bounceIn {
-    from { opacity: 0; transform: scale(0.3) translateY(-50px); }
-    50% { opacity: 1; transform: scale(1.1) translateY(-10px); }
-    to { opacity: 1; transform: scale(1) translateY(0); }
-  }
-  
-  .achievement-card:hover {
-    transform: translateY(-10px) scale(1.05);
-  }
-  
-  .icon-pulse {
-    animation: iconPulse 2s infinite;
-  }
-  
-  @keyframes iconPulse {
-    0% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.4); }
-    70% { box-shadow: 0 0 0 20px rgba(79, 70, 229, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0); }
-  }
-  
-  /* Skill animations */
-  .slide-in-up {
-    animation: slideInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
-  }
-  
-  .skill-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-    background: rgba(255, 255, 255, 0.35);
-  }
-  
-  .skill-icon-rotate:hover {
-    transform: rotateY(360deg);
-    box-shadow: 0 0 20px rgba(79, 70, 229, 0.5);
-  }
-  
-  .skill-percentage {
-    animation: numberCount 1.5s ease-out;
-  }
-  
-  @keyframes numberCount {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  
-  .animate-bar {
-    position: relative;
-    overflow: visible;
-  }
-  
-  .animate-bar::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 8px;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
-    animation: shimmer 2s ease-in-out;
-  }
-  
-  @keyframes shimmer {
-    0% { transform: translateX(-100px); opacity: 0; }
-    50% { opacity: 1; }
-    100% { transform: translateX(100px); opacity: 0; }
-  }
-  
-  /* Experience animations */
-  .slide-in-left {
-    animation: slideInLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1) both;
-  }
-  
-  @keyframes slideInLeft {
-    from { opacity: 0; transform: translateX(-100px) rotateY(-90deg); }
-    to { opacity: 1; transform: translateX(0) rotateY(0deg); }
-  }
-  
-  .experience-card:hover {
-    background: rgba(255, 255, 255, 0.4) !important;
-    transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-  }
-  
-  .exp-title-hover:hover {
-    color: #4f46e5 !important;
-    text-shadow: 0 0 10px rgba(79, 70, 229, 0.3);
-  }
-  
-  .company-glow:hover {
-    text-shadow: 0 0 15px currentColor;
-    transform: scale(1.05);
-  }
-  
-  .date-badge:hover {
-    transform: scale(1.1) rotate(-2deg);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  }
-  
-  .achievement-list li {
-    animation: slideInFromLeft 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
-    transition: all 0.3s ease;
-  }
-  
-  .achievement-item:hover {
-    transform: translateX(10px);
-    color: #4f46e5;
-  }
-  
-  @keyframes slideInFromLeft {
-    from { opacity: 0; transform: translateX(-30px); }
-    to { opacity: 1; transform: translateX(0); }
-  }
-  
-  .tech-tag-animate {
-    animation: techTagPop 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) both;
-  }
-  
-  @keyframes techTagPop {
-    from { opacity: 0; transform: scale(0.5) rotate(180deg); }
-    to { opacity: 1; transform: scale(1) rotate(0deg); }
-  }
-  
-  .tech-tag:hover {
-    transform: translateY(-3px) scale(1.1);
-    background: rgba(79, 70, 229, 0.2);
-    color: #4f46e5;
-    box-shadow: 0 5px 15px rgba(79, 70, 229, 0.2);
-  }
-  
-  /* Education animations */
-  .flip-in {
-    animation: flipIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) both;
-  }
-  
-  @keyframes flipIn {
-    from { opacity: 0; transform: rotateY(-90deg) scale(0.8); }
-    to { opacity: 1; transform: rotateY(0deg) scale(1); }
-  }
-  
-  .education-card:hover {
-    transform: translateY(-10px) rotateY(10deg);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
-  }
-  
-  .education-icon-float {
-    animation: iconFloat 3s ease-in-out infinite;
-  }
-  
-  @keyframes iconFloat {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-10px) rotate(180deg); }
-  }
-  
-  .education-icon-float:hover {
-    animation-play-state: paused;
-    transform: scale(1.2) rotateY(360deg);
-  }
-  
-  /* Contact animations */
-  .zoom-in {
-    animation: zoomIn 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  
-  @keyframes zoomIn {
-    from { opacity: 0; transform: scale(0.5); }
-    to { opacity: 1; transform: scale(1); }
-  }
-  
-  .pulse-button {
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .pulse-button::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: width 0.6s, height 0.6s;
-  }
-  
-  .pulse-button:hover::before {
-    width: 300px;
-    height: 300px;
-  }
-  
-  .pulse-button:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-  }
-  
-  .pulse-button:active {
-    animation: buttonPress 0.1s ease;
-  }
-  
-  @keyframes buttonPress {
-    from { transform: translateY(-5px) scale(1.05); }
-    to { transform: translateY(-3px) scale(1.02); }
-  }
-  
-  /* Glass card hover effects */
-  .glass-card:hover {
-    background: rgba(255, 255, 255, 0.4);
-    transform: translateY(-5px);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
-  }
-  
-  /* Loading animations */
+  /* Animations */
   @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
   }
-  
-  /* Responsive animations */
-  @media (max-width: 768px) {
-    .hero-title {
-      font-size: 2.5rem !important;
-      white-space: normal;
-      border-right: none;
-      animation: fadeInUp 1s 0.5s both;
-    }
-    
-    .achievements-grid {
-      grid-template-columns: 1fr !important;
-    }
-    
-    .exp-content {
-      grid-template-columns: 1fr !important;
-    }
-    
-    .contact-grid {
-      grid-template-columns: 1fr !important;
-    }
-    
-    .achievement-card {
-      animation-delay: 0.1s;
-    }
-    
-    .skill-card {
-      animation-delay: 0.1s;
-    }
-    
-    .experience-card {
-      animation-delay: 0.1s;
-    }
+
+  @keyframes animateBar {
+    from { width: 0%; }
+    to { width: inherit; }
   }
-  
-  /* Smooth scroll behavior */
+
+  .fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .animate-bar {
+    animation: animateBar 1s ease-out forwards;
+  }
+
+  /* Smooth scroll */
   html {
     scroll-behavior: smooth;
   }
-  
+
   /* Custom scrollbar */
   ::-webkit-scrollbar {
     width: 8px;
   }
-  
+
   ::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.1);
+    background: #f1f1f1;
   }
-  
+
   ::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    background: #4b6cb7;
     border-radius: 4px;
   }
-  
+
   ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(135deg, #3730a3, #6d28d9);
+    background: #3b5ca6;
   }
-  
-  /* Performance optimizations */
+
+  /* Base styles */
   * {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  
-  /* Prefers reduced motion */
+
+  body {
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .text-4xl {
+      font-size: 2rem;
+    }
+
+    .text-3xl {
+      font-size: 1.5rem;
+    }
+
+    .grid-cols-2 {
+      grid-template-columns: 1fr;
+    }
+
+    .md\\:grid-cols-2 {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Reduced motion */
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
       animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
     }
   }
 `;
 
-export default App; 
+export default App;
