@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { Mail, Phone, Code, Server, Database, Cloud, Award, Users, Briefcase } from 'lucide-react';
+import profilePicture from "./Pro.JPG";
 
 const App = () => {
   const [scrollY, setScrollY] = useState(0);
