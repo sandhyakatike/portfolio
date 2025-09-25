@@ -173,14 +173,40 @@ const App = () => {
       </header>
 
       {/* Hero Section */}
-      <section className="relative pt-20 pb-10 flex items-center justify-center bg-white" data-animate id="hero">
-        <div className="text-center px-4 max-w-4xl">
-          <h1 className="text-4xl md:text-5xl font-semibold text-gray-800 mb-4">Sandhya Rani Katike</h1>
-          <p className="text-lg text-gray-600 mb-6">Senior Full Stack Developer • 8 Years of Enterprise Solutions</p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <span className="px-4 py-2 rounded-md bg-blue-50 text-blue-700 font-medium transition hover:bg-blue-100">Java & Spring Expert</span>
-            <span className="px-4 py-2 rounded-md bg-teal-50 text-teal-700 font-medium transition hover:bg-teal-100">Cloud Architecture</span>
-            <span className="px-4 py-2 rounded-md bg-gray-50 text-gray-700 font-medium transition hover:bg-gray-100">Agile Leadership</span>
+        <section
+        className="relative pt-20 pb-10 flex items-center justify-center bg-white"
+        data-animate
+        id="hero"
+      >
+        <div className="flex flex-col md:flex-row items-center justify-center gap-8 px-4 max-w-6xl">
+          {/* Profile Picture - Left Side */}
+          <div className="flex-shrink-0">
+            <img
+              src={profilePicture}
+              alt="Sandhya Rani Katike"
+              className="w-48 h-48 rounded-full object-cover shadow-2xl ring-4 ring-blue-100"
+            />
+          </div>
+
+          {/* Name and Details - Center/Right */}
+          <div className="text-center md:text-left flex-1">
+            <h1 className="text-4xl md:text-5xl font-semibold text-gray-800 mb-4">
+              Sandhya Rani Katike
+            </h1>
+            <p className="text-lg text-gray-600 mb-6">
+              Senior Full Stack Developer • 8 Years of Enterprise Solutions
+            </p>
+            <div className="flex flex-wrap justify-center md:justify-start gap-4">
+              <span className="px-4 py-2 rounded-md bg-blue-50 text-blue-700 font-medium transition hover:bg-blue-100">
+                Java & Spring Expert
+              </span>
+              <span className="px-4 py-2 rounded-md bg-teal-50 text-teal-700 font-medium transition hover:bg-teal-100">
+                Cloud Architecture
+              </span>
+              <span className="px-4 py-2 rounded-md bg-gray-50 text-gray-700 font-medium transition hover:bg-gray-100">
+                Agile Leadership
+              </span>
+            </div>
           </div>
         </div>
       </section>
