@@ -363,7 +363,7 @@ const App = () => {
                 <span>sandhyak5757@gmail.com</span>
               </a>
               <a 
-                href="tel:+13145657252" 
+                href="tel:+1 314 2671534 " 
                 className="flex items-center justify-center gap-2 p-4 bg-teal-700 text-white rounded-md hover:bg-teal-800 transition"
               >
                 <Phone className="w-5 h-5" />
