@@ -139,7 +139,7 @@ const App = () => {
       delay: 600
     }, 
     {
-      title: "Software Engineer",
+      title: "Jr. Full-Stack Developer ",
       company: "Shrewdify",
       period: "2017 - 2018",
       color: "text-gray-700",
