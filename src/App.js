@@ -363,11 +363,11 @@ const App = () => {
                 <span>sandhyak5757@gmail.com</span>
               </a>
               <a 
-                href="tel:+1 314 2671534 " 
+                href="tel:+1 314-267-1534 " 
                 className="flex items-center justify-center gap-2 p-4 bg-teal-700 text-white rounded-md hover:bg-teal-800 transition"
               >
                 <Phone className="w-5 h-5" />
-                <span>314-565-7252</span>
+                <span>314-267-1534</span>
               </a>
             </div>
           </div>
